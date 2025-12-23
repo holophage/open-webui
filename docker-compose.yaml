@@ -38,5 +38,15 @@ services:
           memory: 2g
 
 volumes:
-  ollama: {}
-  open-webui: {}
+  ollama: 
+    driver: local
+    driver_opts:
+      type: none
+      device: ${OLLAMA_DATA_DIR-${PWD}/data_ollama}
+      o: bind
+  open-webui:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${OPEN_WEBUI_DATA_DIR-${PWD}/data}
+      o: bind
